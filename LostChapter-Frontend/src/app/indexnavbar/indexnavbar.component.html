@@ -1,0 +1,62 @@
+<header id="container">
+  <div id="nav-bar">
+    <div id="nav-belt">
+      <div class="nav-left">
+        <div id="nav-logo">
+          <a routerLink="/">Lost Chapter</a>
+        </div>
+      </div>
+      <div class="nav-fill">
+        <div id="nav-search">
+          <form id="nav-search-bar-form">
+            <div class="nav-fill">
+              <input type="text" placeholder="Search for books..." [(ngModel)]="searchItem" name="searchItem">
+            </div>
+            <div class="nav-right">
+              <!-- <a routerLink="/search-results" routerLinkActive="/search-results"></a> -->
+              <a routerLink="/search-results/{{searchItem}}" ><button type="submit" style="color: grey; background: aliceblue; height: 45px;" (click)="displaySearchResults()">Search</button></a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="nav-right">
+        <div id="nav-tools">
+          <ng-container *ngIf="ableToSignUp">
+            <a routerLink="/signup">Sign up</a>
+          </ng-container>
+          <ng-container *ngIf="ableToLogIn">
+            <a routerLink="/login">Log in</a>
+          </ng-container>
+          <ng-container *ngIf="loggedIn">
+            <button id="log-out-btn" routerLink="" (click)="logout()">Log Out</button>
+          </ng-container>
+          <!-- Changed routerLink above from routerLink="" to routerLink="/login"  -->
+          <a routerLink="/cart">Cart</a>
+        </div>
+
+      <!-- Name and profile "button" (also the icon for the user) section below -->
+      </div>
+        <div class="p-3" *ngIf="loggedIn" id="profile-buttons">
+          <a routerLink="/userprofile"> <p class="text-white">{{currentUser}}</p></a>
+
+          <!-- replace above with probably something like {{user.username}}}} -->
+        </div>
+        <div class="p-3" *ngIf="notLoggedIn" id="profile-buttons">
+          <p class="text-info" routerLink="/login">Sign in now</p>
+        </div>
+
+        <!-- This will change the icon button routerLink, changing based on the current user's role, sending them to their appropriate page. -->
+        <div class="p-3" *ngIf="roleIsCustomer">
+        <a routerLink="/userprofile"><span class="material-icons-outlined md-light">account_circle</span></a>
+        </div>
+        <div class="p-3" *ngIf="roleIsAdmin">
+          <a routerLink="/userprofile"><span class="material-icons-outlined md-light">account_circle</span></a>
+        </div>
+        <!-- This "button" for the routerLink is to still show the icon incase no users are logged in -->
+        <div class="p-3" *ngIf="notLoggedIn">
+          <a routerLink="/login"><span class="material-icons-outlined md-light">account_circle</span></a>
+        </div>
+    </div>
+
+  </div>
+  </header>

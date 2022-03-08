@@ -1,0 +1,115 @@
+<app-indexnavbar></app-indexnavbar>
+<body style="color: bisque">
+  <div class="container" style="width: auto">
+    <strong> <h1 style="text-align: center; color: black">Profile</h1></strong>
+    <table>
+      <tr>
+        <td>
+          <section>
+            <label for="fileToUpload">
+              <i class="fa fa-camera"></i>
+              <input
+                type="file"
+                id="fileToUpload"
+                style="visibility: hidden"
+                accept=".png,.jpg,jpeg,.PNG,.JPEG"
+                name="fileToUpload"
+              />
+            </label>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS353z701u_xboQT-5iQe6TPhrzKyKMSsFqSw&usqp=CAU"
+            />
+          </section>
+          <h1>{{ currentUser.lastName }}</h1>
+          <!--full Arsene Wengername-->
+          <h3>{{ currentUser.role }}</h3>
+          <!--role should go here-->
+        </td>
+        <td>
+          <ul>
+            <li>
+              <b>First Name</b> &nbsp;&nbsp;
+              <input
+                type="text"
+                name="fullname"
+                id="fullname"
+                required
+                [(ngModel)]="currentUser.firstName"
+              />
+            </li>
+            <li>
+              <b>Last Name</b> &nbsp;&nbsp;
+              <input
+                type="text"
+                name="fullname"
+                id="fullname"
+                [(ngModel)]="currentUser.lastName"
+              />
+            </li>
+            <li>
+              <b>Email</b> &nbsp;&nbsp;
+              <input
+                type="email"
+                name="email"
+                id="email"
+                [(ngModel)]="currentUser.email"
+                required
+              />
+            </li>
+            <li>
+              <b>Role</b> &nbsp;&nbsp;
+              <input
+                type="text"
+                name="role"
+                id="role"
+                [(ngModel)]="currentUser.role"
+                required
+              />
+            </li>
+            <li>
+              <b>Age</b> &nbsp;&nbsp;
+              <input
+                type="number"
+                name="age"
+                id="age"
+                [(ngModel)]="currentUser.age"
+                required
+              />
+            </li>
+            <li>
+              <b>Username</b> &nbsp;&nbsp;
+              <input
+                name="username"
+                type="text"
+                id="username"
+                [(ngModel)]="currentUser.username"
+                required
+              />
+            </li>
+            <li>
+              <b>Address</b> &nbsp;&nbsp;
+              <input
+                name="address"
+                type="text"
+                id="address"
+                [(ngModel)]="currentUser.address"
+                required
+              />
+            </li>
+          </ul>
+          <button
+            mat-raised-button
+            color="primary"
+            style="float: right"
+            (click)="onUpdateClick()"
+          >
+            Update Profile
+          </button>
+          <div style="color: green;">{{ successMessage }}</div>
+          <div style="color: red;">{{ errorMessage }}</div>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
